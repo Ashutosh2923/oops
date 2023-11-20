@@ -3,120 +3,112 @@ using namespace std;
 
 class complex
 {
-    public:
-    float real,imag;
-    
+public:
+    float real, imag;
+
     complex()
     {
-        real=0;
-        imag=0;
+        real = 0;
+        imag = 0;
     }
-    
+
     void read()
     {
-        cin>>real>>imag;
+        cin >> real >> imag;
     }
 
     void display()
     {
-        if(imag>0)
+        if (imag > 0)
         {
-            cout<<real<<"+"<<imag<<"i"<<endl;
+            cout << real << "+" << imag << "i" << endl;
         }
         else
         {
-            cout<<real<<imag<<"i"<<endl;
+            cout << real << imag << "i" << endl;
         }
     }
 
     complex operator +(complex c1)
     {
         complex temp;
-        temp.real=real+c1.real;
-        temp.imag=imag+c1.imag;
+        temp.real = real + c1.real;
+        temp.imag = imag + c1.imag;
         return temp;
     }
 
     complex operator -(complex c1)
     {
         complex temp;
-        temp.real=real-c1.real;
-        temp.imag=imag-c1.imag;
+        temp.real = real - c1.real;
+        temp.imag = imag - c1.imag;
         return temp;
     }
 
     complex operator *(complex c1)
     {
         complex temp;
-
-        temp.real=real*c1.real-imag*c1.imag;
-
-        temp.imag=real*c1.imag+imag*c1.real;
-        
+        temp.real = real * c1.real - imag * c1.imag;
+        temp.imag = real * c1.imag + imag * c1.real;
         return temp;
-
     }
 
     complex operator /(complex c1)
     {
         complex temp;
+        float denominator = c1.real * c1.real + c1.imag * c1.imag;
 
-        float denominator=c1.real*c1.real+c1.imag*c1.imag;
-
-        temp.real=real*c1.real-imag*c1.imag/denominator;
-
-        temp.imag=real*c1.imag+imag*c1.real/denominator;
+        temp.real = (real * c1.real + imag * c1.imag) / denominator;
+        temp.imag = (imag * c1.real - real * c1.imag) / denominator;
 
         return temp;
     }
-
 };
-
 
 int main()
 {
-    complex c1,c2,c3;
+    complex c1, c2, c3;
     char operation;
 
-    cout<<"Enter first complex number:"<<endl;
+    cout << "Enter first complex number:" << endl;
     c1.read();
     c1.display();
 
-    cout<<"Enter second complex number:"<<endl;
+    cout << "Enter second complex number:" << endl;
     c2.read();
     c2.display();
 
-    cout<<"Choose an operation(+,-,*,/)"<<endl;
-    cin>>operation;
+    cout << "Choose an operation (+, -, *, /)" << endl;
+    cin >> operation;
 
-    switch(operation)
+    switch (operation)
     {
-        case '+':
-        c3=c1+c2;
-        cout<<"addition is:"<<endl;
+    case '+':
+        c3 = c1 + c2;
+        cout << "Addition is:" << endl;
         c3.display();
         break;
 
-        case '-':
-        c3=c1-c2;
-        cout<<"subtraction is:"<<endl;
+    case '-':
+        c3 = c1 - c2;
+        cout << "Subtraction is:" << endl;
         c3.display();
         break;
 
-        case '*':
-        c3=c1*c2;
-        cout<<"multiplication is:"<<endl;
+    case '*':
+        c3 = c1 * c2;
+        cout << "Multiplication is:" << endl;
         c3.display();
         break;
 
-        case '/':
-        c3=c1/c2;
-        cout<<"division is:"<<endl;
+    case '/':
+        c3 = c1 / c2;
+        cout << "Division is:" << endl;
         c3.display();
         break;
-        
-        default:
-        cout<<"invalid"<<endl;
+
+    default:
+        cout << "Invalid" << endl;
         break;
     }
     return 0;
