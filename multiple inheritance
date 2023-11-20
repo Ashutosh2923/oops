@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+
+class base1
+{
+    string name;
+    int eid;
+    public: 
+       void read()
+       {
+        cout<<"enter name:"<<endl;
+        cin>>name;
+        cout<<"enter eid:"<<endl;
+        cin>>eid;
+       }
+       void display()
+       {
+        cout<<"Name:"<<name<<endl;
+        cout<<"E ID:"<<eid<<endl;
+       }
+};
+
+class base2
+{
+    double salary;
+    string department;
+
+    public:
+    void read1()
+    {
+        cout<<"Enter salary:"<<endl;
+        cin>>salary;
+        cout<<"Enter department:"<<endl;
+        cin>>department;
+    }
+    void display1()
+    {
+        cout<<"Salary:"<<salary<<endl;
+        cout<<"department:"<<department<<endl;
+    }
+};
+
+class derived:public base1,public base2
+{
+    string designation;
+    public:
+    void read2()
+    {
+        cout<<"enter designation:";
+        cin>>designation;
+    }
+    void display2()
+    {
+        cout<<"designation:"<<designation<<endl;
+    }
+};
+
+int main()
+{
+    derived d;
+    d.read();
+    d.read1();
+    d.read2();
+    d.display();
+    d.display1();
+    d.display2();
+    return 0;
+}
