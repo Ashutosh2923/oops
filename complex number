@@ -1,0 +1,123 @@
+#include<iostream>
+using namespace std;
+
+class comp1
+{
+    int real, imag;
+public:
+    void read();
+    void display();
+    void addition(comp1, comp1);
+    void subtraction(comp1, comp1);
+    void multiplication(comp1, comp1);
+    void division(comp1, comp1);
+};
+
+void comp1::read()
+{
+    cin >> real >> imag;
+}
+
+void comp1::display()
+{
+    if (imag >= 0)
+    {
+        cout << real << "+" << imag << "i" << endl;
+    }
+    else
+    {
+        cout << real << imag << "i" << endl;
+    }
+}
+
+void comp1::addition(comp1 c1, comp1 c2)
+{
+    real = c1.real + c2.real;
+    imag = c1.imag + c2.imag;
+    display();
+}
+
+void comp1::subtraction(comp1 c1, comp1 c2)
+{
+    real = c1.real - c2.real;
+    imag = c1.imag - c2.imag;
+    display();
+}
+
+void comp1::multiplication(comp1 c1, comp1 c2)
+{
+    real = c1.real * c2.real - c1.imag * c2.imag;
+    imag = c1.real * c2.imag + c1.imag * c2.real;
+    display();
+}
+
+void comp1::division(comp1 c1, comp1 c2)
+{
+    comp1 c3, N, D;
+    c3.real = c2.real;
+    c3.imag = -c2.imag;
+
+    N.multiplication(c1, c3);
+    D.multiplication(c2, c3);
+
+    if (D.real != 0 || D.imag != 0)
+    {
+        real = N.real / D.real;
+        imag = N.imag / D.imag;
+        display();
+    }
+    else
+    {
+        cout << "Division by zero is not allowed." << endl;
+    }
+}
+
+int main()
+{
+    comp1 c1, c2;
+    char operation;
+
+    cout<<"Enter first complex number:"<<endl;
+    c1.read();
+    c1.display();
+
+    cout<<"Enter second complex number:"<<endl;
+    c2.read();
+    c2.display();
+
+    cout<<"Choose an operation(+,-,*,/)"<<endl;
+    cin>>operation;
+
+    switch(operation)
+    {
+        case '+':
+        cout << "Addition is:";
+        comp1 sum;
+        sum.addition(c1, c2);
+        break;
+
+        case '-':
+        cout << "Subtraction is:";
+        comp1 sub;
+        sub.subtraction(c1, c2);
+        break;
+
+        case '*':
+        cout << "Multiplication is :";
+        comp1 mul;
+        mul.multiplication(c1, c2);
+        break;
+
+        case '/':
+        cout << "Division is :";
+        comp1 div;
+        div.division(c1, c2);
+        break;
+        
+        
+        default:
+        cout<<"invalid"<<endl;
+        break;        
+}
+return 0;
+}
