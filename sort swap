@@ -1,0 +1,60 @@
+#include<iostream>
+using namespace std;
+
+#define MAX 5
+
+int a[MAX];
+
+void read();
+void display();
+void swap(int *a, int *b);
+void sort();
+
+int main()
+{
+    read();
+    display();
+    sort();
+    display(); // Display the sorted array
+    return 0;
+}
+
+void read()
+{
+    cout << "Enter 5 numbers:";
+    for (int i = 0; i < MAX; i++)
+    {
+        cin >> a[i];
+    }
+}
+
+void display()
+{
+    cout << "The numbers are:";
+    for (int i = 0; i < MAX; i++)
+    {
+        cout << " " << a[i];
+    }
+    cout << endl;
+}
+
+void swap(int *a, int *b)
+{
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void sort()
+{
+    for (int i = 0; i < MAX - 1; i++)
+    {
+        for (int j = 0; j < MAX - 1 - i; j++)
+        {
+            if (a[j] > a[j + 1])
+                swap(&a[j], &a[j + 1]);
+        }
+    }
+}
+
