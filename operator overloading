@@ -1,0 +1,123 @@
+#include<iostream>
+using namespace std;
+
+class complex
+{
+    public:
+    float real,imag;
+    
+    complex()
+    {
+        real=0;
+        imag=0;
+    }
+    
+    void read()
+    {
+        cin>>real>>imag;
+    }
+
+    void display()
+    {
+        if(imag>0)
+        {
+            cout<<real<<"+"<<imag<<"i"<<endl;
+        }
+        else
+        {
+            cout<<real<<imag<<"i"<<endl;
+        }
+    }
+
+    complex operator +(complex c1)
+    {
+        complex temp;
+        temp.real=real+c1.real;
+        temp.imag=imag+c1.imag;
+        return temp;
+    }
+
+    complex operator -(complex c1)
+    {
+        complex temp;
+        temp.real=real-c1.real;
+        temp.imag=imag-c1.imag;
+        return temp;
+    }
+
+    complex operator *(complex c1)
+    {
+        complex temp;
+
+        temp.real=real*c1.real-imag*c1.imag;
+
+        temp.imag=real*c1.imag+imag*c1.real;
+        
+        return temp;
+
+    }
+
+    complex operator /(complex c1)
+    {
+        complex temp;
+
+        float denominator=c1.real*c1.real+c1.imag*c1.imag;
+
+        temp.real=real*c1.real-imag*c1.imag/denominator;
+
+        temp.imag=real*c1.imag+imag*c1.real/denominator;
+
+        return temp;
+    }
+
+};
+
+
+int main()
+{
+    complex c1,c2,c3;
+    char operation;
+
+    cout<<"Enter first complex number:"<<endl;
+    c1.read();
+    c1.display();
+
+    cout<<"Enter second complex number:"<<endl;
+    c2.read();
+    c2.display();
+
+    cout<<"Choose an operation(+,-,*,/)"<<endl;
+    cin>>operation;
+
+    switch(operation)
+    {
+        case '+':
+        c3=c1+c2;
+        cout<<"addition is:"<<endl;
+        c3.display();
+        break;
+
+        case '-':
+        c3=c1-c2;
+        cout<<"subtraction is:"<<endl;
+        c3.display();
+        break;
+
+        case '*':
+        c3=c1*c2;
+        cout<<"multiplication is:"<<endl;
+        c3.display();
+        break;
+
+        case '/':
+        c3=c1/c2;
+        cout<<"division is:"<<endl;
+        c3.display();
+        break;
+        
+        default:
+        cout<<"invalid"<<endl;
+        break;
+    }
+    return 0;
+}
