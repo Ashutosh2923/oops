@@ -1,0 +1,91 @@
+#include<iostream>
+using namespace std;
+
+class stack1
+{
+    int *arr,top,size1;
+    public:
+    stack1(int size)
+    {
+        size1=size;
+        top=-1;
+        arr=new int[size];
+    }
+
+    stack1()
+    {
+        cout<<"constructor called";
+        top=-1;
+    }
+
+    void push()
+    {
+        if(top==size1-1)
+        {
+            cout<<"fullllll";
+
+        }
+        else
+        {
+            cout<<"enter the element:"<<endl;
+            
+            cin>>arr[++top];
+        }
+    }
+        void pop()
+        {
+            if(top==-1)
+            {
+                cout<<"emptyyyyy";
+            }
+            else
+            {
+                cout<<"popped element is:"<<arr[top--]<<endl;
+                
+            }
+        }
+        ~stack1()
+        {
+            delete []arr;
+            cout<<"destructor called"<<endl;
+        }
+    
+};
+
+int main()
+{
+    int sizes=0;
+    int choice=0;
+    
+    cout<<"enter the desired size of array:"<<endl;
+    cin>>sizes;
+
+    stack1 s(sizes);
+
+    do{
+        cout<<"1.push/n2.pop"<<endl;
+        
+        cin>>choice;
+
+        switch(choice)
+        {
+            case 1:
+            s.push();
+            break;
+
+            case 2:
+            s.pop();
+            break;
+
+            case 3:
+            break;
+
+            default:
+            cout<<"enter a valid  number"<<endl;
+            
+
+        }
+    }while(choice!=3);
+    cout<<"terminated";
+    return 0;
+}
