@@ -1,0 +1,55 @@
+#include <iostream>
+
+using namespace std;
+
+/*int main()
+{
+    auto greet=[](int a,int b){
+        cout << "sum : "<<a+b << endl;
+    };
+    greet(10,20);
+    return 0;
+}*/
+
+/*using return type
+int main()
+{
+    auto greet=[](int a,int b){
+       return a+b;
+    };
+     cout << greet(10,20)<< endl;
+    return 0;
+}
+*/
+
+/*use of auto datatype
+int main()
+{
+    auto greet=[](auto a,auto b){
+       return(a+b);
+    };
+     cout << greet(10,20)<< endl;
+     cout << greet(10.1,20.2)<< endl;
+    return 0;
+}
+*/
+
+
+/*use of if else statement
+int main()
+{
+    auto greet=[](auto a,auto b){
+
+        if(a>b){
+        cout << a <<">"<<b<< endl;
+     }
+        else{
+         cout << a <<"<"<<b<< endl;
+        }
+
+    return 0;
+    };
+greet(10,20);
+
+}
+*/
