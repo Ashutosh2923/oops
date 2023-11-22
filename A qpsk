@@ -1,0 +1,41 @@
+clear;
+
+nrdatabits=64000;
+nrsymbols=nrdatabits/2;
+
+bdata=(randn(1,nrdatabits)>.5);
+b=[bdata];
+
+d=zeros(1,length(b)/2);
+
+for n=1:length(b)/2;
+
+    p=b(2*n);
+    imp=b(2*n-1);
+
+    if(p==0)&(imp==0)
+        d(n)=exp(j*pi/4);
+    end
+
+    if(p==1)&(imp==0)
+        d(n)=exp(j*3*pi/4);
+    end
+
+    if(p==1)&(imp==1)
+        d(n)=exp(j*5*pi/4);
+    end
+
+    if(p==0)&(imp==1)
+        d(n)=exp(j*7*pi/4);
+    end
+end
+
+qpsk=d;
+
+figure(1);
+
+plot(d,'o');
+axis([-2 2 -2 2]);
+grid on;
+xlabel('real'); ylabel('imag');
+title('QPSK constellation');
